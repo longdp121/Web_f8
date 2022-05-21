@@ -79,17 +79,42 @@ var courseHandler = function (course, index) {
 
 var newCourses = courses.map(courseHandler);
 
-console.log(newCourses);
+// console.log(newCourses);
 
 //reduce()
-var i = 0;
-function cointHandler(accumulator, currentValue, currentIndex, originArray) {
-    // i++;
-    // console.log(i, accumulator)
-    // console.log(currentValue)
-    return accumulator + currentValue.coint
+// var i = 0;
+// function cointHandler(accumulator, currentValue, currentIndex, originArray) {
+//     // i++;
+//     // console.log(i, accumulator)
+//     // console.log(currentValue)
+//     return accumulator + currentValue.coint
+// }
+
+// var totalCoin = courses.reduce(cointHandler, 0);
+
+// console.log(totalCoin)
+
+
+// var totalCoint = courses.reduce(function(total, course) {
+//   return total + course.coint
+// }, 0);
+
+// console.log(totalCoint)
+
+var numbers = ['fun', 7]
+
+var totalcoin = numbers.reduce(function(total, number){
+  return total + number
+},)
+
+// console.log(totalcoin)
+
+// let total = 'cat';
+for (n of numbers) {
+  console.log(n)
+  n += n
+  console.log(n)
+
 }
 
-var totalCoin = courses.reduce(cointHandler, 0);
 
-console.log(totalCoin)
