@@ -8,39 +8,39 @@
  */
 
 // Sync
-console.log(1);
-console.log(2);
+// console.log(1);
+// console.log(2);
 
 // Async
-setTimeout(function () {
-    console.log("First");
-}, 1000);
-console.log("Second");
+// setTimeout(function () {
+//     console.log("First");
+// }, 1000);
+// console.log("Second");
 
 // Callback hell or Pyramid of doom
-setTimeout(function () {
-    let count = 1;
-    console.log(count);
-    count++;
-    setTimeout(function () {
-        console.log(count);
-        count++;
-        setTimeout(function () {
-            console.log(count);
-            count++;
-            setTimeout(function () {
-                console.log(count);
-                count++;
-                setTimeout(function () {
-                    console.log(count);
-                    setTimeout(function () {
-                        console.log("DONE");
-                    }, 1000);
-                }, 1000);
-            }, 1000);
-        }, 1000);
-    }, 1000);
-}, 1000);
+// setTimeout(function () {
+//     let count = 1;
+//     console.log(count);
+//     count++;
+//     setTimeout(function () {
+//         console.log(count);
+//         count++;
+//         setTimeout(function () {
+//             console.log(count);
+//             count++;
+//             setTimeout(function () {
+//                 console.log(count);
+//                 count++;
+//                 setTimeout(function () {
+//                     console.log(count);
+//                     setTimeout(function () {
+//                         console.log("DONE");
+//                     }, 1000);
+//                 }, 1000);
+//             }, 1000);
+//         }, 1000);
+//     }, 1000);
+// }, 1000);
 
 // promise
 /**
@@ -55,89 +55,88 @@ setTimeout(function () {
  * - 3: Reject
  */
 
-var promise = new Promise(
-    // Executor
-    function (resolve, reject) {
-        // Logic
-        // Success: resolve
-        // Fail: reject
-        // resolve()
-        // reject()
+// var promise = new Promise(
+//     // Executor
+//     function (resolve, reject) {
+//         // Logic
+//         // Success: resolve
+//         // Fail: reject
+//         // resolve()
+//         // reject()
 
-        // let data = {name: "Long", age: 30, job: "Guide"};
-        let data = {};
-        if (Object.values(data).length > 0) {
-            resolve(data)
-        } else {
-            reject("Empty!")
-        }
-    }
-);
+//         // let data = {name: "Long", age: 30, job: "Guide"};
+//         let data = {};
+//         if (Object.values(data).length > 0) {
+//             resolve(data)
+//         } else {
+//             reject("Empty!")
+//         }
+//     }
+// );
 
-promise
-    .then(function (data) {
-        console.log("Successfully load: ", data)
-    })
-    .catch(function (err) {
-        console.log("Error: ", err)
-    })
-    .finally(function () {
-        console.log("Done")
-    })
+// promise
+//     .then(function (data) {
+//         console.log("Successfully load: ", data)
+//     })
+//     .catch(function (err) {
+//         console.log("Error: ", err)
+//     })
+//     .finally(function () {
+//         console.log("Done")
+//     })
 
-// Promise chain. How promise works?
-var promiseChain = new Promise(
-    function (resolve, reject) {
-        resolve()
-    }
-)
+// // Promise chain. How promise works?
+// var promiseChain = new Promise(
+//     function (resolve, reject) {
+//         resolve()
+//     }
+// )
 
-promiseChain
-    .then(function () {
-        return new Promise(function (resolve) {
-            setTimeout(function () {
-                resolve(["Hello anh em"])
-            }, 3000)
-        })
-    })
-    .then(function (data) {
-        console.log(data)
-    })
-    .catch(function () {
+// promiseChain
+//     .then(function () {
+//         return new Promise(function (resolve) {
+//             setTimeout(function () {
+//                 resolve(["Hello anh em"])
+//             }, 3000)
+//         })
+//     })
+//     .then(function (data) {
+//         console.log(data)
+//     })
+//     .catch(function () {
 
-    })
-    .finally(function () {
-        console.log("Done")
-    })
+//     })
+//     .finally(function () {
+//         console.log("Done")
+//     })
 
 // Handle callback hell exemple
 
-let count = 1
-function sleep(ms) {
+function sleep(ms, count) {
     return new Promise(function (resolve) {
         setTimeout(function () {
-            resolve(count);
             count++
+            resolve(count);
         }, ms)
     })
 }
 
-sleep(1000)
+sleep(100, 0)
     .then(function (data) {
         console.log(data);
-        return sleep(1000);
+        return sleep(1000, data);
     })
     .then(function (data) {
         console.log(data);
-        return sleep(1000)
+        return sleep(1000, data)
     })
     .then(function (data) {
         console.log(data);
-        return sleep(1000)
+        return sleep(1000, data)
     })
     .then(function (data) {
         console.log(data);
-        return sleep(1000)
+        return sleep(1000, data)
     })
     .finally(function () {
         console.log("Done")
