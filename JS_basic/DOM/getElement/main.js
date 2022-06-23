@@ -1,38 +1,48 @@
-//getElement: ID, class, tag, css selector, HTML collections
+// HTML DOM
 
-//getElementById
+/**
+ * 1. Element
+ * 2. Attribute
+ * 3. Text
+ */
+
+// How to get element: ID, class, tag, CSS selector, HTML collection
+
+//Get by ID
 var headingNode = document.getElementById("heading");
 
-console.log({
-  element: headingNode,
-});
+console.log(headingNode);
+console.log({"element": headingNode});
 
-//getElementsByClassName
-var subHeadingNodes = document.getElementsByClassName("sub-heading");
+//Get by class ==> Always return HTMLcollection (like array)
+var headingNodes = document.getElementsByClassName("heading");
 
-console.log(subHeadingNodes);
+console.log(headingNodes);
 
-//getElementsByTagname
-var h3Node = document.getElementsByTagName("h3");
+//Get by tagname ==> Always return HTMLcollection (like array)
+var h2Tags = document.getElementsByTagName("h2");
 
-console.log(h3Node);
+console.log(h2Tags)
 
-//querrySelector
-var contentNode = document.querySelector(".content");
+//Get by CSS selector
+var headingTag = document.querySelector("#heading");
 
-console.log(contentNode);
+console.log(headingTag)
 
-//HTMLcollection
-console.log(document.forms);
+var heading2Tag = document.querySelector(".box .heading-2");
 
-//Select multi element as css selctor
+console.log(heading2Tag)
 
-var listItemNodes = document.querySelectorAll(".box-1 li");
+var headingTags = document.querySelectorAll(".heading"); // ==> querySelectorAll return node list (like array)
 
-console.log(listItemNodes);
+console.log(headingTags)
 
-var boxNode = document.querySelector(".box-1")
+//HTML collection
+console.log(document.forms)
+console.log(document.anchors)
 
-console.log(boxNode.querySelectorAll("li"))
-console.log(boxNode.getElementsByTagName("li"))
-console.log(boxNode.getElementsByTagName("p"))
+//Extra
+var boxNode = document.querySelector(".box-1");
+
+console.log(boxNode.querySelectorAll("li"));
+console.log(boxNode.getElementsByTagName("p"));
