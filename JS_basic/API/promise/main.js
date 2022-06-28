@@ -1,40 +1,42 @@
+// Promise
 /**
- * Promise
- * - Sync: Đồng bộ. Code chạy theo thứ tự trên dưới
- * - Async: Bất đồng bộ. setTimeout, setInterval, fetch, XMLHttpRequest, reading file
- * - Nỗi đau
- * - Lý thuyết, cách hoạt động promise
- * - Thực hành, ví dụ
+ * - Sync
+ * - Async
  */
 
-// Sync
-// console.log(1);
-// console.log(2);
+// Sync - Đồng bộ - chạy theo thứ tự trên dưới
 
-// Async
+console.log("a");
+console.log("b");
+
+// Async - Bất đồng bộ - Viết trước nhưng không chạy trước
+/**
+ * 1. SetTimeout
+ * 2. SetInterval
+ * 3. fetch
+ * 4. XMLHttpRequest
+ * 5. Dọc file
+ */
+
 // setTimeout(function () {
 //     console.log("First");
 // }, 1000);
 // console.log("Second");
 
-// Callback hell or Pyramid of doom
+// Callback hell
+
 // setTimeout(function () {
-//     let count = 1;
-//     console.log(count);
-//     count++;
+//     console.log(1);
 //     setTimeout(function () {
-//         console.log(count);
-//         count++;
+//         console.log(2);
 //         setTimeout(function () {
-//             console.log(count);
-//             count++;
+//             console.log(3);
 //             setTimeout(function () {
-//                 console.log(count);
-//                 count++;
+//                 console.log(4);
 //                 setTimeout(function () {
-//                     console.log(count);
+//                     console.log(5);
 //                     setTimeout(function () {
-//                         console.log("DONE");
+//                         console.log("Done");
 //                     }, 1000);
 //                 }, 1000);
 //             }, 1000);
@@ -42,150 +44,139 @@
 //     }, 1000);
 // }, 1000);
 
-// promise
-/**
- * - Step 1: Creat a promise obj
- * - Step 2: Executor
- */
+// My example
 
-/**
- * 3 trạng thái của promíe obj:
- * - 1: Pending
- * - 2: Fullfill
- * - 3: Reject
- */
+// let data = [
+//     { id: 1, course: "JS" },
+//     { id: 2, course: "Python" },
+//     { id: 3, course: "PHP" }
+// ]
 
-// var promise = new Promise(
-//     // Executor
+// let data = [];
+
+// var promiseExample = new Promise(
 //     function (resolve, reject) {
-//         // Logic
-//         // Success: resolve
-//         // Fail: reject
-//         // resolve()
-//         // reject()
-
-//         // let data = {name: "Long", age: 30, job: "Guide"};
-//         let data = {};
-//         if (Object.values(data).length > 0) {
+//         if (data.length > 0) {
 //             resolve(data)
 //         } else {
-//             reject("Empty!")
+//             reject("Data is empty")
 //         }
-//     }
-// );
-
-// promise
-//     .then(function (data) {
-//         console.log("Successfully load: ", data)
-//     })
-//     .catch(function (err) {
-//         console.log("Error: ", err)
-//     })
-//     .finally(function () {
-//         console.log("Done")
-//     })
-
-// // Promise chain. How promise works?
-// var promiseChain = new Promise(
-//     function (resolve, reject) {
-//         resolve()
 //     }
 // )
 
-// promiseChain
-//     .then(function () {
-//         return new Promise(function (resolve) {
-//             setTimeout(function () {
-//                 resolve(["Hello anh em"])
-//             }, 3000)
+// promiseExample
+//     .then(function (courses) {
+//         courses.forEach(function (item) {
+//             let content = `${item.course} has id number: ${item.id}`;
+//             console.log(content)
 //         })
 //     })
-//     .then(function (data) {
-//         console.log(data)
-//     })
-//     .catch(function () {
-
-//     })
-//     .finally(function () {
-//         console.log("Done")
-//     })
-
-// Handle callback hell exemple
-
-// function sleep(ms, count) {
-//     return new Promise(function (resolve) {
-//         setTimeout(function () {
-//             count++
-//             resolve(count);
-//         }, ms)
-//     })
-// }
-
-// sleep(100, 0)
-//     .then(function (data) {
-//         console.log(data);
-//         return sleep(1000, data);
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//         return sleep(1000, data)
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//         return sleep(1000, data)
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//         return new Promise(function(resolve, reject) {
-//             reject("Error")
-//         })
-//     })
-//     .then(function(data) {
-//         console.log(data)
-//         return(sleep(1000, data))
-//     })
-//     .catch(function(err) {
+//     .catch(function (err) {
 //         console.log(err)
 //     })
+//     .finally(function () {
+//         console.log("Redner done")
+//     })
 
+// Promise
 
-// 1.Promise.resolve
-// 2.Promise.reject
-// 3.Promise.all
+// var promise = new Promise(
+//   // Executor
+//   function (resolve, reject) {
+//     // Logic
+//     // Thành công => resolve()
+//     // Thất bại => reject()
 
-// var promise = new Promise(function(resolve, reject) {
-//     resolve("Ok!")
-//     reject("Warning!")
-// })
-
-// var promise = Promise.resolve("DONE!")
-
-// var promise = Promise.reject("WARNING!")
+//     resolve();
+//     // reject()
+//   }
+// );
 
 // promise
-// .then(function(result) {
-//     console.log("Result", result)
-// })
-// .catch(function(err) {
-//     console.log("Err", err)
-// })
+//   .then(function () {
+//     return new Promise(function (resolve) {
+//       setTimeout(function() {
+//         resolve([1, 2, 3])
+//       }, 3000);
+//     });
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//     return 2;
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   })
+//   .catch(function () {
+//     console.log("Fail");
+//   })
+//   .finally(function () {
+//     console.log("Done");
+//   });
 
-var promise1 = new Promise(function(resolve) {
+  // Example handle callback hell
+
+//   function sleep(ms) {
+//     return new Promise(function(resolve) {
+//         setTimeout(resolve, ms)
+//         }
+//     )
+//   }
+
+//   sleep(1000)
+//   .then(function() {
+//     console.log(1)
+//     return sleep(1000)
+//   })
+//   .then(function() {
+//     console.log(2);
+//     return new Promise(function(resolve, reject) {
+//         reject("Fail");
+//     });
+//   })
+//   .then(function() {
+//     console.log(3);
+//     return sleep(1000)
+//   })
+//   .catch(function(err) {
+//     console.log(err)
+//   })
+
+// Promise.resolve
+var promiseResolve = Promise.resolve("ok");
+
+promiseResolve.then(function(result) {
+    console.log(result)
+})
+
+// Promise.reject
+var promiseReject = Promise.reject("Fail");
+
+promiseReject.catch(function(err) {
+    console.log(err)
+})
+
+// Promise.all
+var promiseOne = new Promise(function(resolve, reject) {
     setTimeout(function() {
         resolve([1])
     }, 1000)
 })
 
-var promise2 = new Promise(function(resolve) {
+var promiseTwo = new Promise(function(resolve, reject) {
     setTimeout(function() {
-        resolve([2, 3])
-    }, 3000)
+        resolve([2, 3, 4])
+    }, 2000)
 })
 
-Promise.all([promise1, promise2])
-.then(function(result) {
-    var result1 = result[0];
-    var result2 = result[1];
+var promiseThree = Promise.reject("Fail");
 
-    console.log(result1.concat(result2))
+Promise.all([promiseOne, promiseTwo, promiseThree])
+.then(function(result) {
+    let resultOne = result[0];
+    let resultTwo = result[1];
+    console.log(resultOne.concat(resultTwo))
+})
+.catch(function(err) {
+    console.log("Err: ", err)
 })

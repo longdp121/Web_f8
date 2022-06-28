@@ -1,28 +1,28 @@
-//JSON
-//1. Là một định dạng dữ liệu (dạng chuỗi). Chuỗi json luôn bao bằng nháy đơn, các dữ liệu trong json luôn bao bằng nháy kép
-//2. JavaScript Object Notation
-//3. JSON: Number, String, bool, Null, array, obj
+// JSON là gì
 
-//Mã hóa và giải mã: Encode and Decode
-//Stringify ==> Từ js type sang JSON
-//Parse ==> Từ JSOn sang js type
+// 1. Là định dạng dữ liệu
+// 2. JavaScript Object Notation
+// 3. JSON: Number, bool, null, array, obj, string
 
-//Parse JSON string thành dữ liệu JS. Luôn dùng nháy đơn ngoài cùng
-var jsonArr = '["Python", "JS", "PHP"]'
-var jsonObj = '{"name":"Long", "age":30}';
+// Mã hóa - Giải mã
+// Encode - Decode
+// Stringify - Parse
 
-console.log(JSON.parse(jsonArr));
-console.log(JSON.parse(jsonObj));
+// JSON => JS data | Parse
+var json = '["JS", "PHP", "Python"]';
+var jsonObj = '{"name":"Long","age":100}';
+var jsonStr = '"My String must inside double quote"';
 
+console.log(JSON.parse(json));
+console.log(typeof JSON.parse(jsonObj), JSON.parse(jsonObj));
+console.log(JSON.parse(jsonStr));
 
-//Format dữ liệu JS thành chuỗi JSON
-var myArr = ["JS", "Python", "Ruby", "C#", '"'];
-var myObj = {
-    name: "Long",
-    age: 30,
-    job: "Guide",
-    address: "Hanoi, Vietnam"
+// JS data => JSON | Stringify
+var jsData = ["JS", "PHP", "Python", "Ru'by"];
+var jsObj = {
+  name: "Long",
+  age: 8000,
 };
 
-console.log(JSON.stringify(myArr));
-console.log(JSON.stringify(myObj));
+console.log(JSON.stringify(jsData));
+console.log(typeof JSON.stringify(jsObj), JSON.stringify(jsObj));
